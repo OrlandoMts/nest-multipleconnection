@@ -1,9 +1,19 @@
 import { Module } from '@nestjs/common';
-import { UseService } from './use.service';
-import { UseController } from './use.controller';
+import { MongooseModule } from '@nestjs/mongoose';
+
+import { RoleModule } from './role/role.module';
+import { UserModule } from './user/user.module';
 
 @Module({
-  controllers: [UseController],
-  providers: [UseService],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost:27019/use_db', {
+      connectionName: 'useDb',
+    }),
+    MongooseModule.forRoot('mongodb://localhost:27019/use_db', {
+      connectionName: 'roleDb',
+    }),
+    UserModule,
+    RoleModule,
+  ],
 })
 export class UseModule {}
