@@ -1,22 +1,13 @@
-import {
-  IsDateString,
-  IsEmail,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-} from 'class-validator';
+import { IsDateString, IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
-class AccountDataDto {
+export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   numberemployee: string;
 
   @IsEmail()
-  @IsOptional()
   email: string;
-}
 
-class PersonalDataDto {
   @IsString()
   @IsNotEmpty()
   firstname: string;
@@ -26,14 +17,5 @@ class PersonalDataDto {
   lastname: string;
 
   @IsDateString()
-  @IsNotEmpty()
-  birth: string; // O `Date`, dependiendo de cómo deseas manejar las fechas
-}
-
-export class CreateUserDto {
-  @IsNotEmpty()
-  account_data: AccountDataDto;
-
-  @IsNotEmpty()
-  personal_data: PersonalDataDto;
+  birth: string;
 }

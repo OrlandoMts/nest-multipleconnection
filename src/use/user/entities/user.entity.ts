@@ -1,9 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type UserDocument = User & Document;
-
-@Schema()
+// @Schema()
 class AccountData {
   @Prop({ unique: true })
   numberemployee: string;
@@ -12,7 +10,7 @@ class AccountData {
   email: string;
 }
 
-@Schema()
+// @Schema()
 class PersonalData {
   @Prop()
   firstname: string;
@@ -25,7 +23,7 @@ class PersonalData {
 }
 
 @Schema()
-export class User {
+export class User extends Document {
   @Prop({ type: AccountData })
   account_data: AccountData;
 

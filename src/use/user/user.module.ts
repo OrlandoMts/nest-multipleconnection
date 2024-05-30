@@ -14,5 +14,6 @@ import { UserService } from './user.service';
       'useDb',
     ),
   ],
+  exports: [UserService],
 })
 export class UserModule {}
